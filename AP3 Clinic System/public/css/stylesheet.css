@@ -1,0 +1,205 @@
+    :root {
+      --main-teal: #009688;
+      --light-teal: #4FC3F7;
+      --mint: #A5D6A7;
+      --dark-text: #212121;
+      --light-bg: #F8F9FA;
+      --main-teal-dark: #00695c;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--dark-text);
+      background-color: var(--light-bg);
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Fira Sans', sans-serif;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3rem);
+      letter-spacing: -1px;
+      color: #ffffff; 
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.1rem);
+      color: var(--main-teal);
+      letter-spacing: -0.5px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navbar */
+    .navbar {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .navbar-brand {
+      color: var(--main-teal) !important;
+      font-weight: 700;
+      font-size: 1.5rem;
+      font-family: 'Fira Sans', sans-serif;
+    }
+
+    .nav-link {
+      color: var(--dark-text) !important;
+      font-weight: 500;
+      font-size: 0.8rem;
+      font-family:'Montserrat', sans-serif;
+    }
+    .nav-link:hover {
+      color: var(--main-teal) !important;
+    }
+
+    .navbar-brand i {
+      font-size: 2rem;
+      color: #00796B;
+      margin-right: 5px;
+      line-height: 1;
+    }
+
+    .btn-login {
+      background-color: var(--main-teal);
+      color: white !important;
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;     
+    }
+
+    /* Hero Section with Slideshow */
+    #hero {
+      margin-top: -30px;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero .carousel-item {
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      transition: transform 2s ease, opacity 1.5s ease;
+    }
+
+    #hero .overlay {
+      background: rgba(0, 0, 0, 0.45);
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    #hero p {
+      margin: 20px 0;
+      font-size: clamp(1rem, 2vw, 1rem);
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    #hero h1 {
+      animation: fadeUp 1s ease-out both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-hero {
+      background-color: var(--main-teal);
+      color: white;
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-size: 0.8rem;
+      transition: background 0.3s ease;
+    }
+
+    .btn-hero:hover, .btn-login:hover {
+      background-color: #00796B;
+    }
+
+    /* Section Styles */
+    section {
+      padding: 80px 0;
+    }
+
+    #about {
+      background-color: white;
+    }
+
+    #about p {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    #services .card {
+      border: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: 0.3s;
+    }
+
+    #services .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    }
+
+    #services .card h5 {
+      color: var(--main-teal);
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    #services .card p {
+      font-size: 0.80rem;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    #contact {
+      background-color: white;
+    }
+
+    #contact p {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* Ensure the main area takes full height, pushing the footer to bottom */
+    .account-page .main-content,
+    .management-page .main-content {
+        min-height: calc(100vh - 80px); /* adjust 80px if your header/footer height differs */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #009688;
+      text-align: center;
+      line-height: 0.5;
+      padding: 30px 0;
+      font-size: 0.75rem;
+      color: white;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+    }
+

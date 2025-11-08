@@ -1,0 +1,104 @@
+    /* Sticky footer only for auth pages */
+    body.auth-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    body.auth-page main {
+      flex: 1;
+      min-height: calc(100vh - 66.8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 1rem; 
+      padding-bottom: 1rem;
+    }
+    
+    .btn-teal {
+      background-color: var(--main-teal);
+      color: #fff;
+      border: none;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-teal:hover{
+      background-color: var(--main-teal-dark);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .text-teal {
+      color: var(--main-teal) !important;
+    }
+
+    @media (max-width: 768px) {
+      .row.shadow-lg {
+        flex-direction: column;
+        border-radius: 1rem;
+      }
+    }
+
+    /* Auth Page Styles */
+    body.auth-page {
+    font-family: 'Poppins', 'Segoe UI', sans-serif;
+    color: #212529;
+    }
+
+    /* Headline (Cura Clinic title) */
+    .auth-page h2 {
+    font-size: 1.8rem;          
+    font-weight: 700;
+    color: var(--main-teal);
+    }
+
+    /* Subtitle (Welcome back text) */
+    .auth-page p.text-muted {
+    font-size: 0.95rem;         
+    color: #6c757d;
+    }
+
+    /* Labels */
+    .auth-page .form-label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #444;
+    }
+
+    /* Input fields */
+    .auth-page .form-control {
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    }
+
+    /* Button */
+    .auth-page .btn-teal {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    }
+
+    /* Footer link below form */
+    .auth-page .small {
+    font-size: 0.9rem;
+    }
+
+    /* Responsive: Adjust on smaller screens */
+    @media (max-width: 768px) {
+      .auth-page h2 {
+          font-size: 1.6rem;
+      }
+      .auth-page p.text-muted {
+          font-size: 0.9rem;
+      }
+      .auth-page .form-label,
+      .auth-page .form-control,
+      .auth-page .btn-teal {
+          font-size: 0.9rem;
+      }
+    }
+
+    .auth-page .form-select {
+    font-size: 0.95rem;
+    font-family: inherit;
+    }

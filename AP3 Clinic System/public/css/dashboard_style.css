@@ -1,0 +1,390 @@
+/* Dashboard specific styles */
+.container-fluid {
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    overflow-x: hidden;
+}
+
+/* Summary Cards - Improved Responsiveness */
+.summary-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s;
+    border: none;
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+.summary-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-1 { 
+    background: linear-gradient(135deg, #1a7f8a, #2aa8b4) !important; 
+    color: white !important; 
+    border: none !important;
+}
+.card-2 { 
+    background: linear-gradient(135deg, #4CAF50, #66BB6A); 
+    color: white; 
+}
+.card-3 { 
+    background: linear-gradient(135deg, #2196F3, #64B5F6); 
+    color: white; 
+}
+.card-4 { 
+    background: linear-gradient(135deg, #FF9800, #FFB74D); 
+    color: white; 
+}
+
+.summary-card .card-body {
+    padding: 20px;
+}
+
+.summary-card .card-title {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.summary-card .card-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.summary-card .card-icon {
+    font-size: 2rem;
+    opacity: 0.8;
+}
+
+/* Quick Access Buttons - Better Grid */
+.quick-access-btn {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px 10px;
+    text-align: center;
+    transition: all 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    min-height: 100px;
+    color: var(--main-teal, #1a7f8a);
+    text-decoration: none;
+}
+
+.quick-access-btn:hover {
+    background-color: var(--main-teal, #1a7f8a);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+}
+
+.quick-access-btn i {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: var(--main-teal, #1a7f8a);
+}
+
+.quick-access-btn:hover i {
+    color: white;
+}
+
+.quick-access-btn span {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.dash-btn, .btn-tab.dash-btn {
+    background-color: var(--main-teal, #1a7f8a);
+    color: white;
+    font-size: 0.8rem;
+    border: none;
+    padding: 8px 15px;
+}
+
+.table-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: white;
+    text-transform: capitalize;
+}
+
+/* Define specific status colors */
+.status-completed {
+  background-color: #d1ecf1; /* soft pastel blue */
+  color: #0c5460;           /* deep teal-blue text */
+}
+.status-cancelled { background-color: #f8d7da; color: #721c24; }
+.status-scheduled { background-color: #fff3cd; color: #856404; }
+
+.welcome-header {
+    background: linear-gradient(135deg, var(--main-teal, #1a7f8a), var(--main-teal-dark, #156570));
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.welcome-header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.welcome-header p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+.dashboard-page h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.dashboard-page td {
+    font-size: 0.8rem;
+    padding: 10px 8px;
+}
+
+.dashboard-page th {
+    font-size: 0.8rem;
+    padding: 12px 8px;
+}
+
+.date-display {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Center footer text for dashboard pages */
+body.dashboard-page footer {
+    margin-left: 250px;
+    text-align: center;
+    transition: margin-left 0.3s ease;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 1200px) {
+    .summary-card .card-value {
+        font-size: 1.6rem;
+    }
+    
+    .summary-card .card-icon {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+    
+    body.dashboard-page footer {
+        margin-left: 0;
+    }
+    
+    .welcome-header {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .welcome-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .summary-card .card-body {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    
+    .main-content {
+        padding: 10px;
+    }
+    
+    .summary-card .card-value {
+        font-size: 1.4rem;
+    }
+    
+    .summary-card .card-icon {
+        font-size: 1.6rem;
+    }
+    
+    .quick-access-btn {
+        min-height: 80px;
+        padding: 12px 8px;
+    }
+    
+    .quick-access-btn i {
+        font-size: 1.3rem;
+    }
+    
+    .table-container {
+        padding: 15px;
+    }
+    
+    .welcome-header h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-photo {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .summary-card .card-value {
+        font-size: 1.2rem;
+    }
+    
+    .quick-access-btn span {
+        font-size: 0.7rem;
+    }
+    
+    .dashboard-page h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Simple CSS-only tab solution */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.appointment-tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-tab {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-tab.active {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+/* Mobile toggle button */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    background: var(--main-teal, #1a7f8a);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 991.98px) {
+    .sidebar-toggle {
+        display: block;
+        border-radius: 50%;
+    }
+}
+
+.price-tag.badge {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+}
+
+.appointment-count.badge {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+}
+
+/* Soft Green for Price */
+.price-tag.badge.bg-success {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    border-color: #c3e6cb !important;
+}
+
+/* Soft Blue for Appointments */
+.appointment-count.badge.bg-primary {
+    background-color: #d1ecf1 !important;
+    color: #0c5460 !important;
+    border-color: #bee5eb !important;
+}
+
+/* Button styling to match other dashboards */
+.btn-action {
+    transition: all 0.2s ease-in-out;
+    border-radius: 0.375rem !important;
+    border-width: 1px;
+    padding: 0.25rem 0.5rem;
+}
+
+.btn-action:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-group-sm .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Outline button colors */
+.btn-outline-warning { color: #ffc107; border-color: #ffc107; }
+.btn-outline-warning:hover { background-color: #ffc107; color: #212529; }
+
+.btn-outline-info { color: #17a2b8; border-color: #17a2b8; }
+.btn-outline-info:hover { background-color: #17a2b8; color: white; }
+
+.btn-outline-primary { color: #007bff; border-color: #007bff; }
+.btn-outline-primary:hover { background-color: #007bff; color: white; }
+
+/* Table enhancements */
+.table-container {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    padding: 1.5rem;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.04);
+}

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperAdmin Dashboard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Fira+Sans:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --main-teal: #009688;
+            --light-teal: #4FC3F7;
+            --mint: #A5D6A7;
+            --dark-text: #212121;
+            --light-bg: #F8F9FA;
+            --main-teal-dark: #00695c;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Fira Sans', sans-serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3rem);
+            letter-spacing: -1px;
+            color: #ffffff; 
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 3vw, 2.1rem);
+            color: var(--main-teal);
+            letter-spacing: -0.5px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Dashboard specific styles */
+        .sidebar {
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            min-height: 100vh;
+            position: fixed;
+            width: 250px;
+            z-index: 1000;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+
+        .admin-profile {
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--main-teal);
+            margin-bottom: 15px;
+        }
+
+        .nav-link {
+            color: var(--dark-text);
+            padding: 12px 20px;
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--main-teal);
+            color: white;
+        }
+
+        .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .summary-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            border: none;
+            height: 100%;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-doctors {
+            background: linear-gradient(135deg, var(--main-teal), var(--light-teal));
+            color: white;
+        }
+
+        .card-staff {
+            background: linear-gradient(135deg, #4CAF50, var(--mint));
+            color: white;
+        }
+
+        .card-patients {
+            background: linear-gradient(135deg, #2196F3, #64B5F6);
+            color: white;
+        }
+
+        .card-appointments {
+            background: linear-gradient(135deg, #FF9800, #FFB74D);
+            color: white;
+        }
+
+        .summary-card .card-body {
+            padding: 25px;
+        }
+
+        .summary-card .card-title {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .summary-card .card-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .summary-card .card-icon {
+            font-size: 2.5rem;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .quick-access-btn {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-access-btn:hover {
+            background-color: var(--main-teal);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-access-btn i {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--main-teal);
+        }
+
+        .quick-access-btn:hover i {
+            color: white;
+        }
+
+        .table-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-confirmed {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+        }
+
+        .status-pending {
+            background-color: #FFF3E0;
+            color: #EF6C00;
+        }
+
+        .status-cancelled {
+            background-color: #FFEBEE;
+            color: #C62828;
+        }
+
+        .welcome-header {
+            background: linear-gradient(135deg, var(--main-teal), var(--main-teal-dark));
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .date-display {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                min-height: auto;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-2 px-0 sidebar">
+                <div class="admin-profile">
+                    <img src="assets/images/sho.jpg" alt="Admin Photo" class="admin-photo">
+                    <h5 class="mt-2">Shohei Otani</h5>
+                    <p class="text-muted">Super Admin</p>
+                </div>
+                
+                <nav class="nav flex-column p-3">
+                    <a class="nav-link active" href="#">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-users"></i> User Management
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-calendar-check"></i> Appointments
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-file-medical"></i> Medical Records
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-money-bill-wave"></i> Billing & Payments
+                    </a>
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </nav>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="col-lg-10 main-content">
+                <!-- Welcome Header -->
+                <div class="welcome-header">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1>Welcome back, Mr. Ohtani!</h1>
+                            <p class="date-display" id="currentDate"></p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <i class="fas fa-calendar-alt fa-3x opacity-75"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Summary Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-3 mb-3">
+                        <div class="card summary-card card-doctors">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <div class="card-title">TOTAL DOCTORS</div>
+                                        <div class="card-value">42</div>
+                                    </div>
+                                    <div class="card-icon">
+                                        <i class="fas fa-user-md"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card summary-card card-staff">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <div class="card-title">TOTAL STAFF</div>
+                                        <div class="card-value">78</div>
+                                    </div>
+                                    <div class="card-icon">
+                                        <i class="fas fa-user-nurse"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card summary-card card-patients">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <div class="card-title">TOTAL PATIENTS</div>
+                                        <div class="card-value">1,254</div>
+                                    </div>
+                                    <div class="card-icon">
+                                        <i class="fas fa-user-injured"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="card summary-card card-appointments">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <div class="card-title">TOTAL APPOINTMENTS</div>
+                                        <div class="card-value">324</div>
+                                    </div>
+                                    <div class="card-icon">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Access Buttons -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h2 class="mb-3">Quick Access</h2>
+                    </div>
+                    <div class="col-md-2 col-sm-4 mb-3">
+                        <div class="quick-access-btn">
+                            <i class="fas fa-user-md"></i>
+                            <span>Add Doctor</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 mb-3">
+                        <div class="quick-access-btn">
+                            <i class="fas fa-user-nurse"></i>
+                            <span>Add Staff</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 mb-3">
+                        <div class="quick-access-btn">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Add Patient</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 mb-3">
+                        <div class="quick-access-btn">
+                            <i class="fas fa-users-cog"></i>
+                            <span>Manage Users</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-4 mb-3">
+                        <div class="quick-access-btn">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Manage Appointments</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Appointments Table -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-container">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h2>Recent Appointments</h2>
+                                <a href="#" class="btn btn-outline-primary">View All</a>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Patient</th>
+                                            <th>Doctor</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Michael Johnson</td>
+                                            <td>Dr. Sarah Wilson</td>
+                                            <td>Oct 15, 2023</td>
+                                            <td>10:30 AM</td>
+                                            <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Emily Davis</td>
+                                            <td>Dr. Robert Brown</td>
+                                            <td>Oct 14, 2023</td>
+                                            <td>2:15 PM</td>
+                                            <td><span class="status-badge status-pending">Pending</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>James Wilson</td>
+                                            <td>Dr. Lisa Anderson</td>
+                                            <td>Oct 14, 2023</td>
+                                            <td>9:00 AM</td>
+                                            <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sophia Martinez</td>
+                                            <td>Dr. David Lee</td>
+                                            <td>Oct 13, 2023</td>
+                                            <td>4:45 PM</td>
+                                            <td><span class="status-badge status-cancelled">Cancelled</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Daniel Thompson</td>
+                                            <td>Dr. Sarah Wilson</td>
+                                            <td>Oct 12, 2023</td>
+                                            <td>11:30 AM</td>
+                                            <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Set current date
+        function setCurrentDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
+        }
+        
+        // Initialize the dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            setCurrentDate();
+        });
+    </script>
+</body>
+</html>
