@@ -23,7 +23,7 @@ A **PHP + MySQL web application** to manage clinic operations: doctor schedules,
 
 1. **Install XAMPP** and start **Apache & MySQL**.  
 2. Copy the project folder to: C:\xampp\htdocs\clinic_system (or whatever folder name you'd like to use).
-3. 3. Import the database:  
+3. Import the database:  
 - Open **phpMyAdmin** → Import → `sql/ap3_clinic_system(2).sql.  
 4. Configure the database connection:  
 ```php
